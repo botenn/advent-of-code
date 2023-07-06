@@ -9,3 +9,4 @@ for num_group in num_groups:
     summed_groups.append(sum(int(i) for i in num_group))
 summed_groups.sort(reverse=True)
 print(summed_groups[0])
+print(sum(summed_groups[:3]))
