@@ -11,11 +11,9 @@ score = 0
 
 for round in strategy_guide:
     if round in ["A X", "B Y", "C Z"]:
-        score += 3
-        score += char_to_int[round[2]]
+        score += char_to_int[round[2]] + 3
     elif round in ["C X", "A Y", "B Z"]:
-        score += 6
-        score += char_to_int[round[2]]
+        score += char_to_int[round[2]] + 6
     elif round in ["A Z", "C Y", "B X"]:
         score += char_to_int[round[2]]
 print("Part 1: " + str(score))
