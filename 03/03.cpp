@@ -45,10 +45,8 @@ int main(){
         }
     }
     int total = 0;
-    int counter = 0;
     for (auto& item : items) {
         total += getPriority(item);
-        counter++;
     }
     std::cout << "Part 1: " << total << std::endl;
 
