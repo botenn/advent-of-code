@@ -50,4 +50,21 @@ int main(){
     }
     std::cout << "Part 1: " << total << std::endl;
 
+    i = 0;
+    int badges = 0;
+    while (i < 300) {
+        for (auto& c : rucksacks[i]) {
+            if (std::size_t found = rucksacks[i+1].find(c) != std::string::npos) {
+                if (std::size_t found = rucksacks[i+2].find(c) != std::string::npos) {
+                    badges += getPriority(c);
+                    i += 3;
+                    break;
+                }
+            }
+        }
+
+    }
+       
+    std::cout << "Part 2: " << badges << std::endl;
+    return 0;
 }
