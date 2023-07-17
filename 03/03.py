@@ -19,4 +19,4 @@ for rucksack in rucksacks:
             total += get_priority(item)
             break
 
-print(total)
+print("Part 1: " + str(total))
