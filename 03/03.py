@@ -20,3 +20,14 @@ for rucksack in rucksacks:
             break
 
 print("Part 1: " + str(total))
+
+total = 0
+counter = 0
+while counter < len(rucksacks) - 1:
+    for item in rucksacks[counter]:
+        if item in rucksacks[counter + 1] and item in rucksacks[counter + 2]:
+            total += get_priority(item)
+            counter += 3
+            break
+
+print("Part 2: " + str(total))
