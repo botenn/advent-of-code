@@ -7,7 +7,8 @@
 std::array<std::array<int, 4>, 1000> assignments;
 std::array<int, 4> pairs;
 std::string line;
-int counter = 0;
+int counterAll = 0;
+int counterAny = 0;
 
 std::array<int, 4> parseLine(std::string line) {
     std::array<int, 4> result;
@@ -32,6 +33,13 @@ bool rangeIsSubset(std::array<int, 4> range) {
     }
 }
 
+bool rangeOverlaps(std::array<int, 4> ranges) {
+    int start = std::max(ranges[0], ranges[2]);
+    int end = std::min(ranges[1], ranges[3]);
+
+    return start <= end;
+}
+
 int main () {
     std::ifstream myfile("04-input.txt");
     if (!myfile) {
@@ -46,9 +54,13 @@ int main () {
     myfile.close();
     for (auto& a : assignments) {
        if (rangeIsSubset(a)) {
-           counter++;
+           counterAll++;
+       }
+       if (rangeOverlaps(a)) {
+           counterAny++;
        }
     }
-    std::cout << "Part 1: " << counter << std::endl;
+    std::cout << "Part 1: " << counterAll << std::endl;
+    std::cout << "Part 2: " << counterAny << std::endl;
     return 0;
 }
