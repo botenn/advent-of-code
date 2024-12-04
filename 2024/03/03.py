@@ -4,11 +4,16 @@ import os
 with open(os.path.join(os.path.dirname(__file__), "03-input.txt")) as input_file:
     mem_dump = input_file.read()
 
+do = True
 results = 0
 i = 0
 
 for i in range(len(mem_dump)):
-    if mem_dump[i : i + 4] == "mul(":
+    if mem_dump[i : i + 4] == "do()":
+        do = True
+    if mem_dump[i : i + 7] == "don't()":
+        do = False
+    if do and mem_dump[i : i + 4] == "mul(":
         if ")" in mem_dump[i + 4 : i + 12]:
             p = mem_dump[i + 4 : i + 12].index(")")
             f = mem_dump[i + 4 : i + 4 + p]
@@ -18,4 +23,4 @@ for i in range(len(mem_dump)):
                     results += int(factors[0]) * int(factors[1])
     i += 1
 
-print(f"part 1: {results}")
+print(f"part 2: {results}")
